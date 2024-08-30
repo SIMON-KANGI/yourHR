@@ -9,7 +9,7 @@ function JobList() {
   const [input, setInput]= useState("")
   const debouncedInput = useDebounce(input, 1000);
   const fetchJobs = async () => {
-    const response = await axios.get('http://127.0.0.1:5555/job/jobs');
+    const response = await axios.get('https://yourhr-2des.onrender.com/job/jobs');
     return response.data;
   };
   // Use React Query with the new object-based configuration
