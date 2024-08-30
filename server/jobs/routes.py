@@ -13,15 +13,15 @@ class Jobs(Resource):
         user_id = data.get('user_id')
         title = data.get('title')
         details = data.get('details')
-        categoryName = data.get('categoryName')
-        category= Category.query.filter(Category.name==categoryName).first()
+        category_id= data.get('category_id')
+        
         skills = data.get('skills')
         
         new_job=Job(
             user_id=user_id,
             title=title,
             details=details,
-            category_id=category.id,
+            category_id=category_id,
             skills=skills
         )
         db.session.add(new_job)
@@ -31,3 +31,10 @@ class JobId(Resource):
     def get(self, id):
         job = Job.query.get_or_404(id)
         return jsonify(job.to_dict())
+    
+    
+    def delete(self, id):
+        job = Job.query.get_or_404(id)
+        db.session.delete(job)
+        db.session.commit()
+        return make_response(jsonify({'message': 'Job deleted successfully'}), 204)
