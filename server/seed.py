@@ -9,8 +9,8 @@ with app.app_context():
     db.create_all()
     
     user=[
-        User(username="John Doe", email="john.doe@example.com", password_hash="secret", role="employee"),
-        User(username="Jane Smith", email="jane.smith@example.com", password_hash="secret", role="employer")
+        User(username="John Doe", email="john.doe@example.com", _password="secret", role="employee", skill="Software Development", category_id=1),
+        User(username="Jane Smith", email="jane.smith@example.com", _password="secret", role="employer", skill="Product Management", category_id=6)
     ]
     db.session.add_all(user)
     db.session.commit()
