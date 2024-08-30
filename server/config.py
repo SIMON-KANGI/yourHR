@@ -29,7 +29,7 @@ def create_app():
     app = Flask(__name__)
     
     # CORS configuration
-    CORS(app, resources={r"/*": {"origins": "https://your-hr-theta.vercel.app"}})
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins": "https://your-hr-theta.vercel.app"}})
     
     app.config['SECRET_KEY'] = secret_key
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
