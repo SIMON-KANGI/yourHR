@@ -21,7 +21,7 @@ function handleInput(e){
   setInput(e.target.value)
 }
   // Handle loading and error states
-  if (isLoading) return <Progress isIndeterminate />;
+  if (isLoading) return <Progress isIndeterminate size="xs"/>;
   if (error) return <div>Error: {error.message}</div>;
 const filteredJobs=data.filter(job=>{
   const byInput= job.title.toLowerCase().includes(debouncedInput.toLowerCase());
