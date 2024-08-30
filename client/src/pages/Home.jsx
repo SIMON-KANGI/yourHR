@@ -10,7 +10,7 @@ function Home() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await axios.get('http://127.0.0.1:5555/categories');
+                const res = await axios.get('https://yourhr-2des.onrender.com/categories');
                 setCategories(res.data);
             } catch (error) {
                 toast({
