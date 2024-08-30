@@ -28,22 +28,26 @@ class Users(Resource):
         return jsonify(users)
     
     def post(self):
-        data = request.get_json()
+        data = request.form
         email = data.get('email')
-        username = data.get('username')
+        username = data.get('name')
         password = data.get('password')
         role = data.get('role')
         company=data.get('company')
         skill=data.get('skill')
         profile = data.get('profile')
         file_to_upload = request.files.get('file')
-        category= Category.query.filter(Category.name == skill).first()
+        category= Category.query.filter(Category.name== skill).first()
+        print(skill)
+        app.logger.info(
+            f"Received Data: email={email}, username={username}, password={password}, role={role}, company={company}, skill={skill}, profile={profile}"
+        )
         if User.query.filter_by(email=email).first():
             return make_response(jsonify({'error': 'Email already exists'}), 400)
         
         try:
             if profile == 'image':
-                upload_result = cloudinary.uploader.upload(file_to_upload, resource_type='image')
+                upload_result = uploader.upload(file_to_upload, resource_type='image')
             else:
                 return make_response(jsonify({'error': 'Invalid profile type'}), 400)
         except Exception as e:
