@@ -16,7 +16,7 @@ function Home() {
                 toast({
                     title: 'Error fetching categories',
                     status: 'error',
-                    duration: 5000,
+                    duration: 6000,
                     isClosable: true,
                 });
             }
