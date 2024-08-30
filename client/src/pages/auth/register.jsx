@@ -14,7 +14,7 @@ function Register() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await axios.get('http://127.0.0.1:5555/categories');
+                const res = await axios.get('https://yourhr-2des.onrender.com/categories');
                 setCategories(res.data);
             } catch (error) {
                 toast({
@@ -81,7 +81,7 @@ function Register() {
             formData.append('profile', 'image');
             formData.append('file', file);
 
-            const response = await axios.post('http://127.0.0.1:5555/user/users', formData);
+            const response = await axios.post('https://yourhr-2des.onrender.com/user/users', formData);
 
             if (response.status === 201) {
                 toast({
