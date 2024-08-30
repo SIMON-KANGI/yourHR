@@ -32,7 +32,7 @@ function Login() {
       const { access_token,refresh_token } = response; // Adjust this to match your API's response structure
   
       if (access_token) {
-        const res= await axios.get('http://127.0.0.1:5555/auth/token',{
+        const res= await axios.get('https://yourhr-2des.onrender.com/auth/token',{
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
