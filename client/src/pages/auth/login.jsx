@@ -121,6 +121,7 @@ function Login() {
               --Don't have a yourHr account?--
             </h3>
             <button 
+            onClick={()=>navigate('/signup')}
               className='rounded-full my-3 py-3 bg-transparent border border-green-500'>
               Signup
             </button>
