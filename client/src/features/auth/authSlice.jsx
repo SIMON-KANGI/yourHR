@@ -5,7 +5,7 @@ export const fetchCredentials = createAsyncThunk(
   'auth/fetchCredentials',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://127.0.0.1:5555/auth/login', {
+      const response = await fetch('https://yourhr-2des.onrender.com/auth/login', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
         },
