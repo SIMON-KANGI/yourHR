@@ -38,7 +38,7 @@ function ApplyJob({ id }) {
   
       try {
           setSubmitting(true);
-          const res = await axios.post('http://127.0.0.1:5555/apply/applications', form, {
+          const res = await axios.post('https://yourhr-2des.onrender.com/apply/applications', form, {
               headers: {
                   'Content-Type': 'multipart/form-data',
               },
