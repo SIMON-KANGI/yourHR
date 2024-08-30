@@ -24,7 +24,7 @@ function CreateJobs() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await axios.get('http://127.0.0.1:5555/categories');
+                const res = await axios.get('https://yourhr-2des.onrender.com/categories');
                 setCategories(res.data);
             } catch (error) {
                 toast({
@@ -53,7 +53,7 @@ function CreateJobs() {
         event.preventDefault();
         setIsSubmitting(true);
         try {
-            const res = await axios.post('http://127.0.0.1:5555/job/jobs', formData);
+            const res = await axios.post('https://yourhr-2des.onrender.com/job/jobs', formData);
             console.log(formData)
             if (res.status === 200) {
                 toast({
