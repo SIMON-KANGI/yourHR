@@ -19,17 +19,13 @@ class Login(Resource):
         
         try:
             if user and user.check_password(password):
-                access_token = create_access_token(identity={"email": user.email,  'username':user.username, "role": user.role, "id": user.id, 'user': user.to_dict(),})
-                refresh_token = create_refresh_token(identity={"email": user.email,  'username':user.username, "role": user.role, "id": user.id, 'user': user.to_dict(),})
+                access_token = create_access_token(identity={'user': user.to_dict(),})
+                refresh_token = create_refresh_token(identity={'user': user.to_dict(),})
                 data={
-                    'access_token': access_token,
-                    "refresh_token": refresh_token,
-                   
-                }
+                    "access_token": access_token,
+                    "refresh_token": refresh_token,}
                
                 if data:
-                    
-                    # response= make_response(jsonify(data), 200)
                     
                     return data
                 
@@ -47,3 +43,10 @@ class UserToken(Resource):
     def get(self):
         current_user = get_jwt_identity()
         return jsonify({'token': current_user}, 200)
+    
+    
+class Logout(Resource):
+    @jwt_required()
+    def post(self):
+        unset_jwt_cookies()
+        return jsonify({"message": "Logged out successfully"}), 200
