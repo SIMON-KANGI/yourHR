@@ -6,6 +6,7 @@ import useAuth from '../../hooks/UseAuth'
 import { Button, Menu, MenuButton,MenuGroup,MenuItem, MenuList } from '@chakra-ui/react'
 import LogOut from './logOut'
 import { IoPersonCircle } from "react-icons/io5";
+import { VscGitStashApply } from "react-icons/vsc";
 function NavBar() {
   const isAuthenticated=useAuth(['employee', 'employer'])
   const user=useSelector(selectCurrentUser)
@@ -40,7 +41,7 @@ function NavBar() {
             <MenuGroup>
                <MenuItem className='flex justify-around'>
               <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full'/>
-              <div className='block mx-4'>
+              <div className='block mx-6'>
                 <h1 className='text-xl'>{user.username}</h1>
                 <p className='text-sm'>{user.role}</p>
               </div>
@@ -49,10 +50,12 @@ function NavBar() {
            
             <hr/>
               <MenuItem as={Link} to={`/profile/${user.id}`} className="flex">
-              <IoPersonCircle size="24px"/>
-              <h1 className='mx-2'>Your Profile</h1>
+              <IoPersonCircle size="32px"/>
+              <h1 className='mx-4'>Your Profile</h1>
               </MenuItem>
-              <MenuItem as={Link} to={`/applications`}>My Applications</MenuItem>
+              <MenuItem as={Link} to={`/applications`} className='flex'>
+              <VscGitStashApply size="32px"/>
+              <h1 className="mx-4">My Applications</h1></MenuItem>
               <MenuItem>
                 <LogOut/>
               </MenuItem>
