@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import useAuth from '../../hooks/UseAuth'
 import { Button, Menu, MenuButton,MenuItem, MenuList } from '@chakra-ui/react'
 import LogOut from './logOut'
+import { IoPersonCircle } from "react-icons/io5";
 function NavBar() {
   const isAuthenticated=useAuth(['employee', 'employer'])
   const user=useSelector(selectCurrentUser)
@@ -36,7 +37,18 @@ function NavBar() {
 <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full' />
             </MenuButton>
             <MenuList>
-              <MenuItem as={Link} to={`/profile/${user.id}`}>Profile</MenuItem>
+            <MenuItem className='flex'>
+              <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full'/>
+              <div className='block'>
+                <h1 className='text-xl'>{user.username}</h1>
+                <p className='text-sm'>{user.role}</p>
+              </div>
+            </MenuItem>
+            <hr/>
+              <MenuItem as={Link} to={`/profile/${user.id}`} className="flex">
+              <IoPersonCircle/>
+              <h1>Your Profile</h1>
+              </MenuItem>
               <MenuItem as={Link} to={`/applications`}>My Applications</MenuItem>
               <MenuItem>
                 <LogOut/>
