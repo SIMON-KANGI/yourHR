@@ -37,7 +37,7 @@ function NavBar() {
 <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full' />
             </MenuButton>
             <MenuList>
-            <MenuItem className='flex'>
+            <MenuItem className='flex justify-around'>
               <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full'/>
               <div className='block'>
                 <h1 className='text-xl'>{user.username}</h1>
@@ -46,8 +46,8 @@ function NavBar() {
             </MenuItem>
             <hr/>
               <MenuItem as={Link} to={`/profile/${user.id}`} className="flex">
-              <IoPersonCircle/>
-              <h1>Your Profile</h1>
+              <IoPersonCircle size="24px"/>
+              <h1 className='mx-2'>Your Profile</h1>
               </MenuItem>
               <MenuItem as={Link} to={`/applications`}>My Applications</MenuItem>
               <MenuItem>
