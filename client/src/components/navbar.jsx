@@ -16,7 +16,7 @@ function NavBar() {
     <h1 className='text-3xl font-bold text-green-700 italic'>your<span className='text-rose-700'>HR</span></h1>
       <div>
 <nav>
-    <ul className='lg:flex block'>
+    <ul className='lg:flex block items-center'>
         <li className='mx-4 hover:font-bold'><Link to='/'>Home</Link></li>
        <li className='mx-4 hover:font-bold'>
        <Link to="/jobs">
