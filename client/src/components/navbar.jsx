@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { selectCurrentUser } from '../features/auth/authSlice'
 import { useSelector } from 'react-redux'
 import useAuth from '../../hooks/UseAuth'
-import { Button, Menu, MenuButton,MenuItem, MenuList } from '@chakra-ui/react'
+import { Button, Menu, MenuButton,MenuGroup,MenuItem, MenuList } from '@chakra-ui/react'
 import LogOut from './logOut'
 import { IoPersonCircle } from "react-icons/io5";
 function NavBar() {
@@ -37,13 +37,16 @@ function NavBar() {
 <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full' />
             </MenuButton>
             <MenuList>
-            <MenuItem className='flex justify-around'>
+            <MenuGroup>
+               <MenuItem className='flex justify-around'>
               <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full'/>
-              <div className='block'>
+              <div className='block mx-4'>
                 <h1 className='text-xl'>{user.username}</h1>
                 <p className='text-sm'>{user.role}</p>
               </div>
             </MenuItem>
+            </MenuGroup>
+           
             <hr/>
               <MenuItem as={Link} to={`/profile/${user.id}`} className="flex">
               <IoPersonCircle size="24px"/>
