@@ -49,7 +49,7 @@ function NavBar() {
             </MenuGroup>
            
             <MenuGroup>
-                <MenuItem as={Link} to={`/profile/${user.id}`} className="flex items-center">
+                <MenuItem as={Link} to={`/profile/${user.id}`} className="flex items-center my-4">
               <IoPersonCircle size="32px"/>
               <h1 className='mx-4'>Your Profile</h1>
               </MenuItem>
