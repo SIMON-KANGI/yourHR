@@ -34,7 +34,7 @@ function NavBar() {
       {isAuthenticated &&(
         <div>
           <Menu>
-            <MenuButton as={Button}>
+            <MenuButton  variant='outline'>
 <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full' />
             </MenuButton>
             <MenuList>
@@ -48,14 +48,16 @@ function NavBar() {
             </MenuItem>
             </MenuGroup>
            
-            <hr/>
-              <MenuItem as={Link} to={`/profile/${user.id}`} className="flex">
+            <MenuGroup>
+                <MenuItem as={Link} to={`/profile/${user.id}`} className="flex items-center">
               <IoPersonCircle size="32px"/>
               <h1 className='mx-4'>Your Profile</h1>
               </MenuItem>
-              <MenuItem as={Link} to={`/applications`} className='flex'>
+              <MenuItem as={Link} to={`/applications`} className='flex items-center'>
               <VscGitStashApply size="32px"/>
               <h1 className="mx-4">My Applications</h1></MenuItem>
+            </MenuGroup>
+            
               <MenuItem>
                 <LogOut/>
               </MenuItem>
