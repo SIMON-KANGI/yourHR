@@ -72,7 +72,7 @@ function Login() {
   return (
     <div>
       <div>
-        <Link to="/">yourHr</Link>
+        <h1 className='text-center text-4xl font-bold'>Welcome Back</h1>
       </div>
       <div className='lg:w-1/2 lg:mx-auto justify-center'>
         <div className='lg:w-1/2 lg:mx-auto border px-12 py-16 shadow-md rounded-md'>
