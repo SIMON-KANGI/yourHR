@@ -35,7 +35,7 @@ const filteredJobs=data.filter(job=>{
          
           <CardBody className='hover:bg-stone-200 hover:text-emerald-400'>
            <CardHeader className='text-2xl font-medium'>
-           <Link className='hover:border-b-2' to={`/jobs/${job.title}`} state={{job}}>
+           <Link className='hover:border-b-2 border-black' to={`/jobs/${job.title}`} state={{job}}>
             {job.title}
            </Link>
             
@@ -44,7 +44,7 @@ const filteredJobs=data.filter(job=>{
 
             <div className='flex flex-wrap gap-2'>
             {job.skills.length > 0 && job?.skills.map((skill, index) => (
-                <div key={index} className='bg-gray-200 p-2 text-gray-800 rounded-full'>
+                <div key={index} className='bg-gray-200 p-2 my-4 text-gray-800 rounded-full'>
                   {skill}
                 </div>
               ))}
