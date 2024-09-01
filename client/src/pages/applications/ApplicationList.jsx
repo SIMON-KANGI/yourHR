@@ -27,7 +27,10 @@ function ApplicationList({ applications }) {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-
+if(applications.length <1){
+    return <div>No applications yet.</div>
+  
+}
   return (
     <div>
       {applications.length > 0 && (
@@ -45,7 +48,7 @@ function ApplicationList({ applications }) {
               <tr key={index} className='my-2'>
                 <td>{applicant.username}</td>
                 <td>{applicant.email}</td>
-                
+
               </tr>
             ))}
           </table>
