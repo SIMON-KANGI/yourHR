@@ -2,11 +2,14 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import ApplyJob from '../applications/ApplyJob';
 import useAuth from '../../../hooks/UseAuth';
+import ApplicationList from '../applications/ApplicationList';
 function JobDetails() {
   const isEmployee= useAuth(['employee'])
+  const isEmployer= useAuth(['employer'])
     const location= useLocation()
     const {state}= location;
     const job= state?.job
+    const applications= state?.job.applications
   return (
     <div>
    
@@ -28,7 +31,11 @@ function JobDetails() {
      <ApplyJob id={job.id}/>
     </div>
       )}
-   
+   {isEmployer &&(
+           <div className='w-3/4 mx-auto my-4 p-8 border'>
+     <ApplicationList applications={applications}/>
+    </div>
+      )}
     </div>
   )
 }
