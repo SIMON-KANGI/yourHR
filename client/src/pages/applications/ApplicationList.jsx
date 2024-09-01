@@ -1,34 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { useQuery } from '@tanstack/react-query';
 function ApplicationList({ applications }) {
   const [applicantDetails, setApplicantDetails] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  const fetchApplicants = async (userIds) => {
-    try {
-      const res = await axios.get(`https://yourhr-2des.onrender.com/user/users/${userIds}`);
-      setApplicantDetails(res.data);
-      setLoading(false);
-    } catch (err) {
-      setError('Error fetching applicant details');
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (applications.length > 0) {
-      const userIds = applications.map(app => app.user_id);
-      fetchApplicants(userIds);
-    } else {
-      setApplicantDetails([]);
-      setLoading(false);
-    }
-  }, [applications]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+ 
+const fetchUsers=async()=>{
+    const res=await axios.get('https://yourhr-2des.onrender.com/user/users')
+    return res.data
+}
+const { data, isLoading,error } = useQuery({
+    queryKey: ['users'],
+    queryFn: fetchUsers,
+  });
+const applicant=applications.map(applicant=>{
+    return applicant
+})
+const filterApplicants=data.filter(user=>user.id===applicant.user_id)
 
   return (
     <div>
@@ -36,7 +24,7 @@ function ApplicationList({ applications }) {
         <div>
           <h1 className='text-xl font-bold'>Applications</h1>
           <ul>
-            {applicantDetails.map((applicant, index) => (
+            {filterApplicants.map((applicant, index) => (
               <li key={index} className='my-2'>
                 <div>Name: {applicant.username}</div>
                 <div>Email: {applicant.email}</div>
