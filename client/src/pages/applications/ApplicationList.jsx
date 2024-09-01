@@ -8,9 +8,7 @@ function ApplicationList({ applications }) {
 
   const fetchApplicants = async (userIds) => {
     try {
-      const res = await axios.get(`https://yourhr-2des.onrender.com/user/users`, {
-        params: { ids: userIds.join(',') } // Assuming your backend can handle this
-      });
+      const res = await axios.get(`https://yourhr-2des.onrender.com/user/users/${userIds}`);
       setApplicantDetails(res.data);
       setLoading(false);
     } catch (err) {
