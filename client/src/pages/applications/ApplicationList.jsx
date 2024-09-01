@@ -33,14 +33,22 @@ function ApplicationList({ applications }) {
       {applications.length > 0 && (
         <div>
           <h1 className='text-xl font-bold'>Applications</h1>
-          <ul>
+          <table>
+<thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  
+</thead>
             {applicantDetails.map((applicant, index) => (
-              <li key={index} className='my-2'>
-                <div>Name: {applicant.username}</div>
-                <div>Email: {applicant.email}</div>
-              </li>
+              <tr key={index} className='my-2'>
+                <td>{applicant.username}</td>
+                <td>{applicant.email}</td>
+                
+              </tr>
             ))}
-          </ul>
+          </table>
         </div>
       )}
     </div>
