@@ -48,7 +48,7 @@ const filteredJobs=data.filter(job=>{
                   {skill}
                 </div>
               ))}
-              <span className='float-right rounded-full text-emerald-800 '>{job.applications.length} applications</span>
+              <span className='rounded-full font-bold text-emerald-800 '>{job.applications.length} applications</span>
             </div>
           </CardBody>
         </Card>
