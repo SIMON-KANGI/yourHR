@@ -35,7 +35,7 @@ const filteredJobs=data.filter(job=>{
          
           <CardBody className='hover:bg-stone-200 hover:text-emerald-400'>
            <CardHeader className='text-2xl font-medium'>
-           <Link className='hover:border-b-2 border-black' to={`/jobs/${job.title}`} state={{job}}>
+           <Link className='hover:border-b-2 border-gray-600' to={`/jobs/${job.title}`} state={{job}}>
             {job.title}
            </Link>
             
