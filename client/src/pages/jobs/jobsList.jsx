@@ -41,7 +41,7 @@ const filteredJobs=data.filter(job=>{
             
           </CardHeader>
             <p className='text-gray-700'>{job.details}</p>
-            <span className='float-right w-8 h-8 rounded-full bg-emerald-800 text-white '>{job.applications.length}</span>
+            <span className='float-right items-center w-8 h-8 rounded-full bg-emerald-800 text-white '>{job.applications.length}</span>
             <div className='flex flex-wrap gap-2'>
             {job.skills.length > 0 && job?.skills.map((skill, index) => (
                 <div key={index} className='bg-gray-200 p-2 text-gray-800 rounded-full'>
