@@ -131,7 +131,7 @@ function Register() {
                 >
                     {({ values }) => (
                         <Form className='w-full'>
-                            <h1 className='text-3xl text-center font-bold'>Account Registration</h1>
+                            <h1 className='text-3xl text-center font-bold'>Join as client or freelance</h1>
 
                             {/* Profile Picture Upload */}
                             <div className="flex p-4 border-dotted border-2 relative rounded-full border-stone-800 my-3 justify-center items-center h-40 w-40 overflow-hidden">
