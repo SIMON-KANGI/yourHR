@@ -218,7 +218,7 @@ function Register() {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="bg-sky-700 disabled:opacity-50 p-4 rounded-md hover:bg-sky-600 text-white w-full"
+                                    className="bg-gradient-to-r from-green-700 to-teal-600 disabled:opacity-50 p-4 rounded-md text-white w-full"
                                 >
                                   Create my account
                                 </button>
