@@ -108,7 +108,8 @@ class Application(db.Model, SerializerMixin):
             'user': {
             'id': user.id,
             'username': user.username,
-            'email': user.email
+            'email': user.email,
+            'profile':user.profile
         } if user else None 
         }
 
