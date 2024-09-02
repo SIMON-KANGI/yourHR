@@ -96,6 +96,7 @@ class Application(db.Model, SerializerMixin):
     )
     
     def to_dict(self):
+        user= User.query.filter(User.id==self.user_id).first()
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -103,7 +104,12 @@ class Application(db.Model, SerializerMixin):
             'status': self.status,
             'application_date': self.application_date,
             'letter': self.letter,
-            'resume': self.resume
+            'resume': self.resume,
+            'user': {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email
+        } if user else None 
         }
 
 class Category(db.Model, SerializerMixin):
