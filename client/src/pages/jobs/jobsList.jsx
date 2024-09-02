@@ -50,7 +50,7 @@ const filteredJobs=data.filter(job=>{
               ))}
              
             </div>
-             <span className='rounded-full font-bold text-emerald-800 '>{job.applications.length} applications</span>
+             <span className='rounded-full font-bold text-emerald-800 '>{job.applications.length} applicants</span>
           </CardBody>
         </Card>
       ))}
