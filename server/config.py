@@ -29,10 +29,9 @@ def create_app():
     app = Flask(__name__)
     
     # CORS configuration
-    CORS(app, supports_credentials=True, resources={r"/*": {"origins": "https://your-hr-theta.vercel.app"}})
-    
+    CORS(app, supports_credentials=True, resources={r"/*": {"origins": ["https://your-hr-theta.vercel.app", "http://localhost:5173"]}})
     app.config['SECRET_KEY'] = secret_key
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///hr.db')
     app.config['JWT_SECRET_KEY'] = secret_key
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     
