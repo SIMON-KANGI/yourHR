@@ -40,7 +40,7 @@ const filteredJobs=data.filter(job=>{
            </Link>
             
           </CardHeader>
-            <p className='text-gray-700'>{job.details}</p>
+            <p className='text-gray-700'>{job.details.slice(0,300)}....</p>
 
             <div className='flex flex-wrap gap-2'>
             {job.skills.length > 0 && job?.skills.map((skill, index) => (
