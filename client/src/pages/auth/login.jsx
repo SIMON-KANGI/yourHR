@@ -35,12 +35,12 @@ function Login() {
   
       if (access_token,user) {
         setSubmitting(false)
-        const res= await axios.get('https://yourhr-2des.onrender.com/auth/token',{
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        })
-        const [{token}] =res.data
+        // const res= await axios.get('https://yourhr-2des.onrender.com/auth/token',{
+        //   headers: {
+        //     Authorization: `Bearer ${access_token}`,
+        //   },
+        // })
+        // const [{token}] =res.data
         dispatch(setCredentials({ isAuthenticated: true, user:user, token:access_token, refresh:refresh_token })); // Dispatch to authSlice
         toast({
           title: 'Logged in successfully',
