@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../features/api';
 import { setCredentials } from '../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
-import { useToast } from '@chakra-ui/react';
+import { useToast, Progress } from '@chakra-ui/react';
 import axios from 'axios'; // Import axios
 
 function Login() {
@@ -12,6 +12,7 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const toast = useToast();
+  const [isSubmitting, setSubmitting]=useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -24,21 +25,23 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page reload
     try {
+      setSubmitting(true)
       const response = await login({
         email: formData.email,
         password: formData.password,
       }).unwrap();
   
-      const { access_token,refresh_token } = response; // Adjust this to match your API's response structure
+      const { access_token,refresh_token,user } = response; // Adjust this to match your API's response structure
   
       if (access_token) {
+        setSubmitting(false)
         const res= await axios.get('https://yourhr-2des.onrender.com/auth/token',{
           headers: {
             Authorization: `Bearer ${access_token}`,
           },
         })
         const [{token}] =res.data
-        dispatch(setCredentials({ isAuthenticated: true, user:token.user, token:access_token, refresh:refresh_token })); // Dispatch to authSlice
+        dispatch(setCredentials({ isAuthenticated: true, user:user, token:access_token, refresh:refresh_token })); // Dispatch to authSlice
         toast({
           title: 'Logged in successfully',
           status: 'success',
@@ -56,6 +59,7 @@ function Login() {
         });
       }
     } catch (error) {
+      setSubmitting(false)
       console.error("Login error:", error); // Log the error
       toast({
         title: 'Error Logging in',
@@ -71,6 +75,7 @@ function Login() {
 
   return (
     <div>
+      {isSubmitting && <Progress size='xs' isIndeterminate colorScheme='green' />}
       <div>
         <h1 className='text-center mt-5 text-4xl font-bold'>Welcome Back</h1>
       </div>
