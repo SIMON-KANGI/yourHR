@@ -66,7 +66,7 @@ class Job(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
     skills = db.Column(JSON, nullable=False)  
-    applications = db.relationship('Application', backref='job', lazy=True)
+    applications = db.relationship('Application', backref='job', lazy=True, cascade="all, delete-orphan")
     
     def to_dict(self):
         return {
