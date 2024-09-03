@@ -82,3 +82,9 @@ class UserId(Resource):
         db.session.commit()
         return jsonify(user.to_dict())
     
+    def delete(self, id):
+        user = User.query.get_or_404(id)
+        db.session.delete(user)
+        db.session.commit()
+        return jsonify({'message': 'User deleted successfully'})
+    
