@@ -19,8 +19,8 @@ class User(db.Model, SerializerMixin):
     is_active = db.Column(db.Boolean, nullable=False, default=True)
     last_login = db.Column(db.DateTime, nullable=True)
     company = db.Column(db.String(255), nullable=True)
-    jobs = db.relationship('Job', backref='user', lazy=True)
-    applications = db.relationship('Application', backref='user', lazy=True)
+    jobs = db.relationship('Job', backref='user', lazy=True, cascade="all, delete-orphan")
+    applications = db.relationship('Application', backref='user', lazy=True, cascade="all, delete-orphan")
 
     @validates('username')
     def validate_username(self, key, value):
