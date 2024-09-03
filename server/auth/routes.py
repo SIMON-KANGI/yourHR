@@ -19,12 +19,13 @@ class Login(Resource):
         
         try:
             if user and user.check_password(password):
-                access_token = create_access_token(identity={'user': user.to_dict(),})
-                refresh_token = create_refresh_token(identity={'user': user.to_dict(),})
+                access_token = create_access_token(identity={'user': user.id,})
+                refresh_token = create_refresh_token(identity={'user': user.id,})
                 data={
                     "access_token": access_token,
-                    "refresh_token": refresh_token,}
-               
+                    "refresh_token": refresh_token,
+                     "user": user.to_dict()
+                    }
                 if data:
                     
                     return data
