@@ -48,7 +48,6 @@ class User(db.Model, SerializerMixin):
             'role': self.role,
             'skill': self.skill,
             'is_active': self.is_active,
-            'last_login': self.last_login,
             'company': self.company,
             'jobs': [job.to_dict() for job in self.jobs],
             'applications': [application.to_dict() for application in self.applications]
