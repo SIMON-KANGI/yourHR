@@ -49,13 +49,11 @@ class User(db.Model, SerializerMixin):
             'skill': self.skill,
             'is_active': self.is_active,
             'company': self.company,
-            'last_login': self.last_login.isoformat(),
-           
-            'jobs': [job.to_dict() for job in self.jobs],
-            'applications': [application.to_dict() for application in self.application],
+            'last_login': self.last_login.isoformat() if self.last_login else None,  # Handle None case
             'jobs': [job.to_dict() for job in self.jobs],
             'applications': [application.to_dict() for application in self.applications]
         }
+
 
 
 
