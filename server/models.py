@@ -74,7 +74,7 @@ class Job(db.Model, SerializerMixin):
             'id': self.id,
             'title': self.title,
             'details': self.details,
-            'created_at': self.created_at,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
             'user_id': self.user_id,
             'category_id': self.category_id,
             'skills': self.skills,
@@ -103,7 +103,7 @@ class Application(db.Model, SerializerMixin):
             'user_id': self.user_id,
             'job_id': self.job_id,
             'status': self.status,
-            'application_date': self.application_date,
+            'application_date': self.application_date.isoformat() if self.application_date else None,
             'letter': self.letter,
             'resume': self.resume,
             'user': {
