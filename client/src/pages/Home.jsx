@@ -63,7 +63,7 @@ function Home() {
         <img src="/image1.jpg" alt="talent" className='rounded-md h-96' />
       </div>
         <div className='ml-4'>
-            <h1 className="text-4xl font-bold">Up your Work game, it's easy</h1>
+            <h1 className="text-4xl font-bold">Up your work game, it's easy</h1>
             <div className='my-4'>
                 <h2 className='text-xl font-semibold flex items-center'>
                 <TfiWrite/>
