@@ -55,12 +55,12 @@ function Home() {
            
         </div>
         <div>
-            <img src="/image1.jpg" alt="talent" className='rounded-full h-80' />
+            <img src="/image2.jpg" alt="talent" className='rounded-full h-96' />
         </div>
       </section>
       <section className='w-3/4 h-fit mx-auto flex items-center py-16'>
       <div>
-        <img src="/image1.jpg" alt="talent" className='rounded-md h-80' />
+        <img src="/image1.jpg" alt="talent" className='rounded-md h-96' />
       </div>
         <div className='ml-4'>
             <h1 className="text-4xl font-bold">Up your Work game, it's easy</h1>
