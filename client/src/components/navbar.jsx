@@ -29,8 +29,8 @@ function NavBar() {
            Login
            </Link>
            </li>
-       <li className=' hover:font-bold bg-gradient-to-r from-green-700 to-teal-600 text-white rounded-lg py-2 px-6'>
-       <Link to="/signup">Register</Link>
+       <li className=' hover:font-bold bg-gradient-to-r from-green-800 to-teal-700 text-white rounded-lg py-2 px-6'>
+       <Link to="/signup">Sign up</Link>
        </li>
       
         </div>
