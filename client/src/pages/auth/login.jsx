@@ -48,7 +48,7 @@ function Login() {
           duration: 5000,
           isClosable: true,
         });
-        navigate('/', { replace: true }); // Redirect to home or desired path
+        navigate('/jobs', { replace: true }); // Redirect to home or desired path
       } else {
         toast({
           title: 'Error Logging in',
