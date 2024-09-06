@@ -117,7 +117,7 @@ function Login() {
             </div>
             <button 
               type="submit" 
-              className='bg-emerald-600 text-white w-full my-3 py-3 rounded-full'>
+              className='bg-black text-white w-full my-3 py-3 rounded-full'>
               Login
             </button>
           </form>
