@@ -175,8 +175,8 @@ function Register() {
                                     <label className='font-bold'>Select a role</label>
                                     <Field as="select" name="role" placeholder="Role" className="w-full p-2 rounded-md border-gray-700 border">
                                         <option value="">Select a role</option>
-                                        <option value="employee">Employee</option>
-                                        <option value="employer">Employer</option>
+                                        <option value="employee">Job seeker</option>
+                                        <option value="employer">Client</option>
                                     </Field>
                                     <ErrorMessage name="role" component="div" className="text-red-500" />
                                 </div>
