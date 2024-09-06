@@ -7,6 +7,7 @@ import Jobs from './pages/jobs/jobs'
 import JobDetails from './pages/jobs/jobDetails'
 import Home from './pages/Home'
 import AppDetails from './pages/applications/AppDetails'
+import Footer from './components/Footer'
 function App() {
   return (
     <main id="app" className='min-h-screen'>
@@ -19,6 +20,7 @@ function App() {
       <Route path="/jobs/:title" element={<JobDetails />} />
       <Route path="/jobs/applicants/:username" element={<AppDetails />} />
     </Routes>
+    <Footer/>
     </main>
   )
 }
