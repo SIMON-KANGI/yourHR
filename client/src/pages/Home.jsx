@@ -3,6 +3,10 @@ import useAuth from '../../hooks/UseAuth'
 import axios from 'axios';
 import { Card, CardBody, useToast } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
+import { TfiWrite } from "react-icons/tfi";
+import { TiPin } from "react-icons/ti";
+import { GiAlliedStar } from "react-icons/gi";
+import { MdOutlineStarPurple500 } from "react-icons/md";
 function Home() {
     const toast = useToast();
     const navigate= useNavigate()
@@ -61,15 +65,21 @@ function Home() {
         <div className='ml-4'>
             <h1 className="text-4xl font-bold">Up your Work game, it's easy</h1>
             <div className='my-4'>
-                <h2 className='text-xl font-semibold'>No cost to Join</h2>
+                <h2 className='text-xl font-semibold flex items-center'>
+                <TfiWrite/>
+                <span className='p-2'>No cost to Join</span></h2>
                 <p className='text-sm'>Register and browse talent profiles,explore projects and even book a consultation</p>
             </div>
             <div>
-                <h2 className='text-xl font-semibold'>Post a Job and hire top talent</h2>
+                <h2 className='text-xl font-semibold flex items-center'>
+                <TiPin/>
+                <span className='p-2'>Post a Job and hire top talent</span></h2>
                 <p className="text-sm">Finding talent doesn’t have to be a chore. Post a job or we can search for you!</p>
             </div>
             <div className='my-4'>
-                <h2 className='text-xl font-semibold'>Work with the best—without breaking the bank</h2>
+                <h2 className='text-xl font-semibold flex items-center'>
+                <GiAlliedStar/>
+                <span className='p-2'>Work with the best—without breaking the bank</span></h2>
                 <p className='text-sm'>Upwork makes it affordable to up your work and take advantage of low transaction rates.</p>
             </div>
             <div>
@@ -78,17 +88,23 @@ function Home() {
             </div>
         </div>
       </section>
-      <section className='w-3/4 h-fit mx-auto flex items-center py-16'>
+      <section className='w-3/4 h-fit mx-auto items-center py-16'>
       <div className='flex-col'>
         <h1 className='text-5xl font-semibold'>Browse talent by category</h1>
         <p>Looking for work? <Link className='text-green-700'>Browse jobs</Link></p>
       </div>
-        <div>
+        <div className='grid grid-cols-4'>
             {categories.map(category=>{
                 return(
-                    <Card>
-                        <CardBody>
-                            <h1>{category.name}</h1>
+                    <Card className='my-4 mx-2'>
+                        <CardBody className='bg-gray-100 py-8'>
+                            <h1 className='text-2xl'>{category.name}</h1>
+                            <div className='flex justify-between my-4'>
+                                <h2 className='flex items-center'>
+                                <MdOutlineStarPurple500 color="green"/>
+                               <span>4.85/5</span> </h2>
+                                <h2>1853 skills</h2>
+                            </div>
                         </CardBody>
                     </Card>
                 )
