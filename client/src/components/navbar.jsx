@@ -47,7 +47,7 @@ function NavBar() {
             <MenuGroup>
                <MenuItem className='flex justify-around'>
               <img src={user.profile} alt={user.username} className='w-12 h-12 rounded-full'/>
-              <div className='block mx-6'>
+              <div className='block mx-2'>
                 <h1 className='text-xl'>{user.username}</h1>
                 <p className='text-sm'>{user.role}</p>
               </div>
