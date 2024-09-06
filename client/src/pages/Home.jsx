@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import useAuth from '../../hooks/UseAuth'
 import axios from 'axios';
-import { useToast } from '@chakra-ui/react';
+import { Card, CardBody, useToast } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 function Home() {
     const toast = useToast();
@@ -51,7 +51,48 @@ function Home() {
            
         </div>
         <div>
-            <img src="/image1.jpg" alt="talent" className='rounded-full' />
+            <img src="/image1.jpg" alt="talent" className='rounded-full h-80' />
+        </div>
+      </section>
+      <section className='w-3/4 h-fit mx-auto flex items-center py-16'>
+      <div>
+        <img src="/image1.jpg" alt="talent" className='rounded-md h-80' />
+      </div>
+        <div className='ml-4'>
+            <h1 className="text-4xl font-bold">Up your Work game, it's easy</h1>
+            <div className='my-4'>
+                <h2 className='text-xl font-semibold'>No cost to Join</h2>
+                <p className='text-sm'>Register and browse talent profiles,explore projects and even book a consultation</p>
+            </div>
+            <div>
+                <h2 className='text-xl font-semibold'>Post a Job and hire top talent</h2>
+                <p className="text-sm">Finding talent doesn’t have to be a chore. Post a job or we can search for you!</p>
+            </div>
+            <div className='my-4'>
+                <h2 className='text-xl font-semibold'>Work with the best—without breaking the bank</h2>
+                <p className='text-sm'>Upwork makes it affordable to up your work and take advantage of low transaction rates.</p>
+            </div>
+            <div>
+              <button className="py-2 w-fit px-4 bg-green-600 text-white font-semibold rounded-md">Sign up for free</button>
+              <button className="py-2 mx-4 border-2 w-fit px-4 border-green-700 text-green-700 font-medium rounded-lg">Learn how to hire</button>
+            </div>
+        </div>
+      </section>
+      <section className='w-3/4 h-fit mx-auto flex items-center py-16'>
+      <div className='flex-col'>
+        <h1 className='text-5xl font-semibold'>Browse talent by category</h1>
+        <p>Looking for work? <Link className='text-green-700'>Browse jobs</Link></p>
+      </div>
+        <div>
+            {categories.map(category=>{
+                return(
+                    <Card>
+                        <CardBody>
+                            <h1>{category.name}</h1>
+                        </CardBody>
+                    </Card>
+                )
+            })}
         </div>
       </section>
     </div>
