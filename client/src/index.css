@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #app{
-background-color: rgb(249, 249, 240);
+background-color: rgb(254, 254, 254);
 }
 .btn{
     background-color: #208000;
