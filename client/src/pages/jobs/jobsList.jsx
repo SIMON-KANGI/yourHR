@@ -3,14 +3,16 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardBody, CardHeader, Progress } from '@chakra-ui/react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { selectCurrentUser } from '../../features/auth/authSlice';
 import useDebounce from '../../../hooks/UseDebounce';
 import FilterJobs from './filterJobs';
+import { useSelector } from 'react-redux';
 
 function JobList() {
   const [input, setInput] = useState('');
   const debouncedInput = useDebounce(input, 1000);
   const [selectedCategory, setCategory] = useState('');
+  const user= useSelector(selectCurrentUser)
 
   // Fetch jobs from the API
   const fetchJobs = async () => {
@@ -42,7 +44,8 @@ function JobList() {
   const filteredJobs = data.filter((job) => {
     const byInput = job.title.toLowerCase().includes(debouncedInput.toLowerCase());
     const filterCategory = !selectedCategory || job.category_id === selectedCategory;
-    return byInput && filterCategory;
+    const currentUser= job.user_id === user.id
+    return byInput && filterCategory && currentUser;
   });
 
   return (
@@ -52,10 +55,11 @@ function JobList() {
       {filteredJobs?.map((job) => (
         <Card key={job.id} mb={4}>
           <CardBody className='hover:bg-stone-200 hover:text-emerald-400'>
-            <CardHeader className='text-2xl font-medium'>
-              <Link className='hover:border-b-2 border-gray-600' to={`/jobs/${job.id}`} state={{ job }}>
+            <CardHeader className=' font-medium flex flex-col'>
+              <Link className='text-2xl hover:border-b-2 border-gray-600' to={`/jobs/${job.id}`} state={{ job }}>
                 {job.title}
               </Link>
+              <span className='text-md'>Posted on {job.created_at.slice(0,10)}</span>
             </CardHeader>
             <p className='text-gray-700'>{job.details.slice(0, 300)}...</p>
 
