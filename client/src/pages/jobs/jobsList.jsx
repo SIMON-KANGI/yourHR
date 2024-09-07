@@ -44,9 +44,12 @@ function JobList() {
   const filteredJobs = data.filter((job) => {
     const byInput = job.title.toLowerCase().includes(debouncedInput.toLowerCase());
     const filterCategory = !selectedCategory || job.category_id === selectedCategory;
-    const currentUser= job.user_id === user.id
+    const currentUser= job.user_id === user?.id
     return byInput && filterCategory && currentUser;
   });
+  if(!user){
+    return <div className='text-center text-xl text-rose-600 font-bold'>Please login to view your job list</div> 
+  }
 
   return (
     <div className='w-3/4 mx-auto'>
