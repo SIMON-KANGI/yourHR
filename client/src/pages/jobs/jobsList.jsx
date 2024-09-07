@@ -7,12 +7,14 @@ import { selectCurrentUser } from '../../features/auth/authSlice';
 import useDebounce from '../../../hooks/UseDebounce';
 import FilterJobs from './filterJobs';
 import { useSelector } from 'react-redux';
+import useAuth from '../../../hooks/UseAuth';
 
 function JobList() {
   const [input, setInput] = useState('');
   const debouncedInput = useDebounce(input, 1000);
   const [selectedCategory, setCategory] = useState('');
-  const user= useSelector(selectCurrentUser)
+  const user = useSelector(selectCurrentUser);
+  const isAuthenticated = useAuth(['employee', 'employer']);
 
   // Fetch jobs from the API
   const fetchJobs = async () => {
@@ -44,25 +46,26 @@ function JobList() {
   const filteredJobs = data.filter((job) => {
     const byInput = job.title.toLowerCase().includes(debouncedInput.toLowerCase());
     const filterCategory = !selectedCategory || job.category_id === selectedCategory;
-    const currentUser= job.user_id === user?.id
-    return byInput && filterCategory && currentUser;
+    return byInput && filterCategory;
   });
-  if(!user){
-    return <div className='text-center text-xl text-rose-600 font-bold'>Please login to view your job list</div> 
+
+  // Show a login prompt if user is not logged in
+  if (!user) {
+    return <div className='text-center text-xl text-rose-600 font-bold'>Please login to view your job list</div>;
   }
 
   return (
     <div className='w-3/4 mx-auto'>
       <FilterJobs handleFilterCategory={handleChangeCategory} input={input} handleInput={handleInput} />
 
-      {filteredJobs?.map((job) => (
+      {isAuthenticated && filteredJobs?.map((job) => (
         <Card key={job.id} mb={4}>
           <CardBody className='hover:bg-stone-200 hover:text-emerald-400'>
-            <CardHeader className=' font-medium flex flex-col'>
+            <CardHeader className='font-medium flex flex-col'>
               <Link className='text-2xl hover:border-b-2 border-gray-600' to={`/jobs/${job.id}`} state={{ job }}>
                 {job.title}
               </Link>
-              <span className='text-md'>Posted on {job.created_at.slice(0,10)}</span>
+              <span className='text-md'>Posted on {job.created_at.slice(0, 10)}</span>
             </CardHeader>
             <p className='text-gray-700'>{job.details.slice(0, 300)}...</p>
 
