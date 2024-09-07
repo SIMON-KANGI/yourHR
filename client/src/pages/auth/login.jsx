@@ -47,6 +47,7 @@ function Login() {
           status: 'success',
           duration: 5000,
           isClosable: true,
+          position: 'top',
         });
         navigate('/jobs', { replace: true }); // Redirect to home or desired path
       } else {
