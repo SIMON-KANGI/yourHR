@@ -4,13 +4,13 @@ import { useToast, Progress } from '@chakra-ui/react';
 import * as yup from 'yup';
 import { FaImage } from 'react-icons/fa';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 function Register() {
     const [file, setFile] = useState(null);
     const toast = useToast();
     const [categories, setCategories] = useState([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
-
+    const navigate= useNavigate();
     useEffect(() => {
         const fetchCategories = async () => {
             try {
@@ -90,6 +90,7 @@ function Register() {
                     duration: 5000,
                     isClosable: true,
                 });
+                navigate('/login')
             } else {
                 throw new Error('Unexpected response status');
             }
