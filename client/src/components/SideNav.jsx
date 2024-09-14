@@ -3,10 +3,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { IoMenu } from "react-icons/io5";
 import { RiCloseLargeFill, RiSearchEyeFill } from "react-icons/ri";
+import useAuth from '../../hooks/UseAuth';
+import LogOut from './logOut';
 function SideNav() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const isAuthenticated= useAuth('employer', 'employee')
   return (
-    <div>
+    <div className='lg:invisible visible'>
     <button onClick={onOpen}>
 <IoMenu size='32px'/>
     </button>
@@ -26,11 +29,12 @@ function SideNav() {
           <DrawerBody className='shadow-lg'>
          <ul className='block'>
 
-              <div className='my-10'><Link to='/' className='text-md'>Home</Link></div>
+              <div className='my-10'><Link to='/' onClick={onClose} className='text-md'>Home</Link></div>
+            <div className='my-10'><Link to='/jobs' onClick={onClose} className='text-md'>Jobs</Link></div>
+            <div className='my-10'><Link to='/' onClick={onClose} className='text-md'>Home</Link></div>
             <div className='my-10'><Link to='/about' className='text-md'>About</Link></div>
-            <div className='my-10'><Link to='/' className='text-md'>Home</Link></div>
-            <div className='my-10'><Link to='/about' className='text-md'>About</Link></div>
-            <div className='my-10'><Link to='/login' className='text-md'>Login</Link></div>
+            {!isAuthenticated &&<div className='my-10'><Link to='/login' onClick={onClose} className='text-md'>Login</Link></div>}
+            {isAuthenticated &&<div className='my-10'><LogOut/></div>}
          </ul>
           
           </DrawerBody>
