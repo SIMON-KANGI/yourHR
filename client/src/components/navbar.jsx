@@ -7,15 +7,19 @@ import { Button, Menu, MenuButton,MenuGroup,MenuItem, MenuList } from '@chakra-u
 import LogOut from './logOut'
 import { IoPersonCircle } from "react-icons/io5";
 import { VscGitStashApply } from "react-icons/vsc";
+import SideNav from './SideNav'
 function NavBar() {
   const isAuthenticated=useAuth(['employee', 'employer'])
   const user=useSelector(selectCurrentUser)
   return (
-    <header className='flex items-center justify-around p-8 shadow-md sticky z-10'>
+    <header className='flex items-center  lg:justify-around justify-between lg:p-8 p-2 shadow-md sticky z-10'>
+    <div className="flex">
+      <SideNav/>
+    <h1 className='text-3xl mx-2  font-bold text-green-700 italic'>your<span className='text-rose-700'>HR</span></h1>
+    </div>
 
-    <h1 className='text-3xl font-bold text-green-700 italic'>your<span className='text-rose-700'>HR</span></h1>
       <div>
-<nav>
+<nav className='lg:visible invisible'>
     <ul className='lg:flex block items-center'>
         <li className='mx-4 hover:font-bold'><Link to='/'>Home</Link></li>
        <li className='mx-4 hover:font-bold'>
@@ -74,7 +78,12 @@ function NavBar() {
   
     </ul>
 </nav>
+
       </div>
+      <button className="bg-green-600 rounded-lg text-white xs:mr-10 mr-6 w-32 py-2">
+         <Link to="/signup" className='lg:invisible visible'>Sign up</Link>
+      </button>
+     
     </header>
   )
 }
