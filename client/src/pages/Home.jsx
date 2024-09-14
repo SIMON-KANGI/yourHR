@@ -30,7 +30,7 @@ function Home() {
     const isAuthenticated=useAuth(['employer', 'employee'])
   return (
     <div>
-    <ul className='flex text-center mx-12 my-4'>
+    <ul className='flex text-center lg:mx-12 lg:my-4 lg:visible invisible'>
         {categories.map(category => (
             <li key={category.id} className='mx-2 hover:text-emerald-700 hover:border-b'>
             <Link>
@@ -39,28 +39,24 @@ function Home() {
         ))}
   
     </ul>
-      <section className='w-3/4 mx-auto flex justify-between py-16'>
-        <div>
-            <h1 className='text-6xl font-bold my-4'>Welcome to yourHr <hr/> Job Portal</h1>
-            <p className='text-xl font-medium'>Forget the old rules. You can have the best people.<br/>Right now. Right here.</p>
+      <section className='lg:w-3/4 w-full p-4 lg:mx-auto flex justify-between lg:py-16'>
+        <div className='w-full'>
+            <h1 className='lg:text-6xl text-5xl font-bold w-96 my-4 text-wrap'>Welcome to yourHr Job Portal</h1>
+            <p className='text-xl font-medium'>Forget the old rules. You can have the best people.Right now. Right here.</p>
         {isAuthenticated &&(
             <button onClick={()=>navigate('/jobs')} className="btn rounded-lg py-3 my-8 text-white w-40">Explore Jobs</button> 
         )}
         {!isAuthenticated && (
         <button onClick={()=>navigate('/signup')} className="btn rounded-lg py-3 my-8 text-white w-40">Get Started</button>   
         )}
-            
-               
-
-           
-        </div>
+            </div>
         <div>
-            <img src="/image2.jpg" alt="talent" className='rounded-full h-96' />
+            <img src="/image2.jpg" alt="talent" className='lg:visible invisible rounded-full h-96' />
         </div>
       </section>
-      <section className='w-3/4 h-fit mx-auto flex items-center py-16'>
+      <section className='lg:w-3/4 w-full h-fit p-4 lg:mx-auto lg:flex items-center py-16'>
       <div>
-        <img src="/image1.jpg" alt="talent" className='rounded-md h-96' />
+        <img src="/image1.jpg" alt="talent" className='rounded-md lg:h-96' />
       </div>
         <div className='ml-4'>
             <h1 className="text-4xl font-bold">Up your work game, it's easy</h1>
@@ -88,12 +84,12 @@ function Home() {
             </div>
         </div>
       </section>
-      <section className='w-3/4 h-fit mx-auto items-center py-16'>
+      <section className='lg:w-3/4 w-full h-fit p-4 lg:mx-auto items-center py-16'>
       <div className='flex-col'>
-        <h1 className='text-5xl font-semibold'>Browse talent by category</h1>
+        <h1 className='lg:text-5xl text-3xl font-semibold'>Browse talent by category</h1>
         <p>Looking for work? <Link className='text-green-700'>Browse jobs</Link></p>
       </div>
-        <div className='grid grid-cols-4'>
+        <div className='lg:grid lg:grid-cols-4  flex-wrap'>
             {categories.map(category=>{
                 return(
                     <Card className='my-4 mx-2'>
